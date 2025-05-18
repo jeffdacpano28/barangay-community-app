@@ -1,7 +1,28 @@
-- name: Deploy to Firebase Hosting
-  uses: FirebaseExtended/action-hosting-deploy@v0
-  with:
-    repoToken: '${{ secrets.GITHUB_TOKEN }}'
-    firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-    channelId: live
-    projectId: barangay-app-12b52
+name: Firebase Deploy
+
+on:
+  push:
+    branches:
+      - main  # or 'master' if that's your default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🛠️ Build React app
+        run: npm run build
+
+      - name: 🚀 Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          project
