@@ -1,0 +1,13 @@
+.my-button {
+  background: rgba(52, 144, 220, 0.2);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease;
+}
+
+.my-button:hover {
+  background: rgba(39, 121, 189, 0.3);
+}
