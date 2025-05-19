@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from "./Auth";
@@ -6,45 +5,84 @@ import Dashboard from "./Dashboard";
 import CertificatePage from "./CertificatePage";
 import BlotterPage from "./BlotterPage";
 import PrivateRoute from "./PrivateRoute";
-import Layout from "./Layout";
+import Navbar from "./Navbar";
+import BorrowPage from "./BorrowPage";
+import VolunteerPage from "./VolunteerPage";
+import EventPage from "./EventPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Public route */}
+        {/* Public Route */}
         <Route path="/" element={<Auth />} />
 
-        {/* Protected routes with layout */}
+        {/* Protected Routes */}
         <Route
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Layout>
+              <>
+                <Navbar />
                 <Dashboard />
-              </Layout>
+              </>
             </PrivateRoute>
           }
         />
         <Route
-          path="/certificates"
+          path="/certificate"
           element={
             <PrivateRoute>
-              <Layout>
+              <>
+                <Navbar />
                 <CertificatePage />
-              </Layout>
+              </>
             </PrivateRoute>
           }
         />
         <Route
-          path="/blotters"
+          path="/blotter"
           element={
             <PrivateRoute>
-              <Layout>
+              <>
+                <Navbar />
                 <BlotterPage />
-              </Layout>
+              </>
             </PrivateRoute>
           }
+        />
+        <Route 
+          path="/borrow" 
+          element={
+            <PrivateRoute>
+              <>
+              <Navbar />
+              <BorrowPage />
+              </>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/volunteer" 
+          element={
+            <PrivateRoute>
+              <>
+              <Navbar />
+              <VolunteerPage />
+              </>
+            </PrivateRoute>
+          }
+        />
+        <Route 
+          path="/events" 
+          element={
+            <PrivateRoute>
+              <>
+              <Navbar />
+              <EventPage />
+              </>
+            </PrivateRoute>
+          } 
         />
       </Routes>
     </Router>

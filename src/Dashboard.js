@@ -46,12 +46,13 @@ const Dashboard = () => {
   }, []);
 
   const actions = [
-    { label: "Issuance of Certificate", action: () => alert("Issuance of Certificate") },
-    { label: "Blotter Reporting", action: () => alert("Blotter Reporting") },
-    { label: "Borrow Barangay Equipment", action: () => alert("Borrow Equipment") },
-    { label: "Volunteer Programs", action: () => alert("Volunteer Programs") },
-    { label: "Event Scheduling", action: () => alert("Event Scheduling") },
-  ];
+    { label: "Issuance of Certificate", path: "/certificate" },
+    { label: "Blotter Reporting", path: "/blotter" },
+    { label: "Borrow Barangay Equipment", path: "/borrow" },
+    { label: "Volunteer Programs", path: "/volunteer" },
+      { label: "Event Scheduling", path: "/events" },
+];
+
 
   return (
     <div style={styles.container}>
@@ -83,7 +84,11 @@ const Dashboard = () => {
         <h2>Community App Dashboard</h2>
         <div style={styles.actions}>
           {actions.map((item, index) => (
-            <div key={index} style={styles.card} onClick={item.action}>
+            <div
+              key={index}
+              style={styles.card}
+              onClick={() => navigate(item.path)}
+            >
               {item.label}
             </div>
           ))}
@@ -131,8 +136,9 @@ const styles = {
     padding: "20px",
     backgroundColor: "#e6f7ff",
     borderRadius: "10px",
-    boxShadow: "0 2px 5px rgb(5, 241, 44)",
+    boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
     cursor: "pointer",
+    transition: "0.3s ease",
   },
   button: {
     marginTop: "10px",

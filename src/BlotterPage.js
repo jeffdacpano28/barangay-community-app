@@ -1,55 +1,52 @@
-import React, { useState } from 'react';
-import Navbar from './Navbar'; // ✅ Import Navbar
+import React from "react";
 
-export default function BlotterPage() {
-  const [incident, setIncident] = useState('');
-  const [blotters, setBlotters] = useState([]);
-
-  // TODO: fetch blotters from Firestore here
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!incident.trim()) return alert('Please describe the incident');
-
-    // TODO: Save blotter to Firestore
-    alert(`Blotter submitted: ${incident}`);
-    setIncident('');
-  };
-
+const BlotterPage = () => {
   return (
-    <>
-      <Navbar /> {/* ✅ Navbar added */}
-      <div className="p-6 max-w-md mx-auto bg-white rounded shadow mt-6">
-        <h2 className="text-2xl font-semibold mb-4">File Blotter</h2>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            className="w-full p-2 border rounded mb-4"
-            placeholder="Describe the incident"
-            rows={4}
-            value={incident}
-            onChange={(e) => setIncident(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
-          >
-            Submit
-          </button>
-        </form>
-
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-2">Your Blotters</h3>
-          {blotters.length === 0 ? (
-            <p>No blotters submitted.</p>
-          ) : (
-            <ul className="list-disc list-inside">
-              {blotters.map((b, i) => (
-                <li key={i}>{b.description} - Status: {b.status}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </>
+    <div style={styles.container}>
+      <h2>Blotter Reporting</h2>
+      <p>Report an incident to the barangay officials.</p>
+      <form style={styles.form}>
+        <input type="text" placeholder="Full Name" required style={styles.input} />
+        <textarea placeholder="Incident Details" required style={styles.textarea} />
+        <button type="submit" style={styles.button}>Submit Report</button>
+      </form>
+    </div>
   );
-}
+};
+
+const styles = {
+  container: {
+    padding: "40px",
+    textAlign: "center",
+  },
+  form: {
+    marginTop: "20px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px",
+  },
+  input: {
+    padding: "10px",
+    width: "300px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+  },
+  textarea: {
+    padding: "10px",
+    width: "300px",
+    height: "100px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+  },
+  button: {
+    padding: "10px 20px",
+    backgroundColor: "#28a745",
+    color: "#fff",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
+};
+
+export default BlotterPage;

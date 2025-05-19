@@ -7,9 +7,10 @@ const Navbar = () => {
     <nav className="bg-blue-600 text-white p-4 flex justify-between">
       <div className="font-bold text-lg">Barangay App</div>
       <div className="space-x-4">
-        <Link to="/dashboard" className="hover:underline">Dashboard</Link>
-        <Link to="/certificates" className="hover:underline">Certificates</Link>
-        <Link to="/blotters" className="hover:underline">Blotters</Link>
+        {/* <Link to="/dashboard">Dashboard</Link> */}
+        {/* <Link to="/certificate">Certificates</Link> */}
+        {/* <Link to="/blotter">Blotters</Link> */}
+
       </div>
     </nav>
   );

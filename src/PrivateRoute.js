@@ -8,7 +8,8 @@ const PrivateRoute = ({ children }) => {
   const [user, loading] = useAuthState(auth);
 
   if (loading) return <p>Loading...</p>;
-  return user ? children : <Navigate to="/" />;
+
+  return user ? <>{children}</> : <Navigate to="/" />;
 };
 
 export default PrivateRoute;
