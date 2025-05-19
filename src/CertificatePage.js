@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CertificatePage = () => {
+  const [certificateType, setCertificateType] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Request submitted for: ${certificateType}`);
+    // You can add actual form handling here
+  };
+
   return (
     <div style={styles.container}>
       <h2>Issuance of Certificate</h2>
       <p>Here you can request an official barangay certificate.</p>
-      <form style={styles.form}>
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <select
+          value={certificateType}
+          onChange={(e) => setCertificateType(e.target.value)}
+          required
+          style={styles.input}
+        >
+          <option value="" disabled>Select Certificate Type</option>
+          <option value="Residency">Certificate of Residency</option>
+          <option value="Indigency">Certificate of Indigency</option>
+          <option value="Barangay Clearance">Barangay Clearance</option>
+          <option value="Solo Parent">Solo Parent Certificate</option>
+          <option value="Business Clearance">Business Clearance</option>
+        </select>
+
         <input type="text" placeholder="Full Name" required style={styles.input} />
         <input type="text" placeholder="Purpose" required style={styles.input} />
         <button type="submit" style={styles.button}>Submit Request</button>

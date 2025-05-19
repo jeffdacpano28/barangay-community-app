@@ -84,6 +84,18 @@ function App() {
             </PrivateRoute>
           } 
         />
+        <Route 
+          path="/announcements" 
+          element={
+            <AnnouncementsPage />
+          } 
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProfilePage />
+          } 
+        />
       </Routes>
     </Router>
   );
